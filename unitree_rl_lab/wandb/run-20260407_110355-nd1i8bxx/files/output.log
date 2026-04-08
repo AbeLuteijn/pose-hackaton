@@ -1,0 +1,313 @@
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-04-07_11-03-57.log[0m
+[36m======================================================================================[0m
+
+[33m11:03:57 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : 42
+	Physics step-size     : 0.005
+	Rendering step-size   : 0.02
+	Environment step-size : 0.02
+[INFO] Generating terrains based on curriculum took : 0.222209 seconds
+[INFO]: Time taken for scene creation : 10.598917 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 4096
+	Environment spacing   : 2.5
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : ['/World/ground']
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 14.053945 seconds
+[INFO] Command Manager:  <CommandManager> contains 1 active terms.
++------------------------------------------------+
+|              Active Command Terms              |
++-------+---------------+------------------------+
+| Index | Name          |          Type          |
++-------+---------------+------------------------+
+|   0   | base_velocity | UniformVelocityCommand |
++-------+---------------+------------------------+
+
+[INFO] Event Manager:  <EventManager> contains 3 active terms.
++--------------------------------------+
+| Active Event Terms in Mode: 'startup' |
++----------+---------------------------+
+|  Index   | Name                      |
++----------+---------------------------+
+|    0     | physics_material          |
+|    1     | add_base_mass             |
++----------+---------------------------+
++---------------------------------------+
+|  Active Event Terms in Mode: 'reset'  |
++--------+------------------------------+
+| Index  | Name                         |
++--------+------------------------------+
+|   0    | base_external_force_torque   |
+|   1    | reset_base                   |
+|   2    | reset_robot_joints           |
++--------+------------------------------+
++----------------------------------------------+
+|    Active Event Terms in Mode: 'interval'    |
++-------+------------+-------------------------+
+| Index | Name       | Interval time range (s) |
++-------+------------+-------------------------+
+|   0   | push_robot |        (5.0, 5.0)       |
++-------+------------+-------------------------+
+
+[INFO] Recorder Manager:  <RecorderManager> contains 0 active terms.
++---------------------+
+| Active Recorder Terms |
++-----------+---------+
+|   Index   | Name    |
++-----------+---------+
++-----------+---------+
+
+[INFO] Action Manager:  <ActionManager> contains 1 active terms.
++-----------------------------------------+
+|     Active Action Terms (shape: 23)     |
++-------+---------------------+-----------+
+| Index | Name                | Dimension |
++-------+---------------------+-----------+
+|   0   | JointPositionAction |        23 |
++-------+---------------------+-----------+
+
+[INFO] Observation Manager: <ObservationManager> contains 2 groups.
++----------------------------------------------------------+
+| Active Observation Terms in Group: 'policy' (shape: (390,)) |
++-----------+--------------------------------+-------------+
+|   Index   | Name                           |    Shape    |
++-----------+--------------------------------+-------------+
+|     0     | base_ang_vel                   |    (15,)    |
+|     1     | projected_gravity              |    (15,)    |
+|     2     | velocity_commands              |    (15,)    |
+|     3     | joint_pos_rel                  |    (115,)   |
+|     4     | joint_vel_rel                  |    (115,)   |
+|     5     | last_action                    |    (115,)   |
++-----------+--------------------------------+-------------+
++----------------------------------------------------------+
+| Active Observation Terms in Group: 'critic' (shape: (405,)) |
++-----------+--------------------------------+-------------+
+|   Index   | Name                           |    Shape    |
++-----------+--------------------------------+-------------+
+|     0     | base_lin_vel                   |    (15,)    |
+|     1     | base_ang_vel                   |    (15,)    |
+|     2     | projected_gravity              |    (15,)    |
+|     3     | velocity_commands              |    (15,)    |
+|     4     | joint_pos_rel                  |    (115,)   |
+|     5     | joint_vel_rel                  |    (115,)   |
+|     6     | last_action                    |    (115,)   |
++-----------+--------------------------------+-------------+
+
+[INFO] Termination Manager:  <TerminationManager> contains 3 active terms.
++------------------------------------+
+|      Active Termination Terms      |
++-------+-----------------+----------+
+| Index | Name            | Time Out |
++-------+-----------------+----------+
+|   0   | time_out        |   True   |
+|   1   | base_height     |  False   |
+|   2   | bad_orientation |  False   |
++-------+-----------------+----------+
+
+[INFO] Reward Manager:  <RewardManager> contains 20 active terms.
++-----------------------------------------+
+|           Active Reward Terms           |
++-------+------------------------+--------+
+| Index | Name                   | Weight |
++-------+------------------------+--------+
+|   0   | track_lin_vel_xy       |    2.0 |
+|   1   | track_ang_vel_z        |    1.0 |
+|   2   | base_lin_vel_z         |   -2.0 |
+|   3   | base_ang_vel_xy        |  -0.05 |
+|   4   | base_height            |    -10 |
+|   5   | flat_orientation       |  -10.0 |
+|   6   | joint_vel              | -0.001 |
+|   7   | joint_acc              | -1e-08 |
+|   8   | dof_pos_limits         |   -5.0 |
+|   9   | joint_deviation_arms   |   -1.0 |
+|   10  | joint_deviation_waists |   -1.0 |
+|   11  | joint_deviation_legs   |   -1.0 |
+|   12  | gait                   |    0.5 |
+|   13  | feet_slide             |   -0.2 |
+|   14  | feet_clearance         |    1.0 |
+|   15  | feet_height_symmetry   |   -0.5 |
+|   16  | alive                  |    1.0 |
+|   17  | action_rate            |  -0.05 |
+|   18  | energy                 | -2e-05 |
+|   19  | undesired_contacts     |     -1 |
++-------+------------------------+--------+
+
+[INFO] Curriculum Manager:  <CurriculumManager> contains 2 active terms.
++----------------------------+
+|  Active Curriculum Terms   |
++-------+--------------------+
+| Index | Name               |
++-------+--------------------+
+|   0   | terrain_levels     |
+|   1   | lin_vel_cmd_levels |
++-------+--------------------+
+
+[INFO]: Completed setting up the environment...
+/home/user/miniconda3/envs/isaaclab/lib/python3.11/site-packages/rsl_rl/utils/utils.py:245: UserWarning: The observation configuration dictionary 'obs_groups' must contain the 'policy' key. As an observation group with the name 'policy' was found, this is assumed to be the observation set. Consider adding the 'policy' key to the 'obs_groups' dictionary for clarity. This behavior will be removed in a future version.
+  warnings.warn(
+/home/user/miniconda3/envs/isaaclab/lib/python3.11/site-packages/rsl_rl/utils/utils.py:283: UserWarning: The observation configuration dictionary 'obs_groups' must contain the 'critic' key. As an observation group with the name 'critic' was found, this is assumed to be the observation set. Consider adding the 'critic' key to the 'obs_groups' dictionary for clarity. This behavior will be removed in a future version.
+  warnings.warn(
+--------------------------------------------------------------------------------
+Resolved observation sets:
+	 policy :  ['policy']
+	 critic :  ['critic']
+--------------------------------------------------------------------------------
+Actor MLP: MLP(
+  (0): Linear(in_features=390, out_features=512, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=512, out_features=256, bias=True)
+  (3): ELU(alpha=1.0)
+  (4): Linear(in_features=256, out_features=128, bias=True)
+  (5): ELU(alpha=1.0)
+  (6): Linear(in_features=128, out_features=23, bias=True)
+)
+Critic MLP: MLP(
+  (0): Linear(in_features=405, out_features=512, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=512, out_features=256, bias=True)
+  (3): ELU(alpha=1.0)
+  (4): Linear(in_features=256, out_features=128, bias=True)
+  (5): ELU(alpha=1.0)
+  (6): Linear(in_features=128, out_features=1, bias=True)
+)
+[34m[1mwandb[0m: [33mWARNING[0m Symlinked 1 file into the W&B run directory; call wandb.save again to sync new files.
+[34m[1mwandb[0m: wandb.init() called while a run is active and reinit is set to 'default', so returning the previous run.
+[34m[1mwandb[0m: [33mWARNING[0m Step cannot be set when using tensorboard syncing. Please use `run.define_metric(...)` to define a custom metric to log your step values.
+################################################################################
+                      [1m Learning iteration 0/50000 [0m
+
+                       Computation: 12428 steps/s (collection: 7.089s, learning 0.820s)
+             Mean action noise std: 0.99
+          Mean value_function loss: 0.0620
+               Mean surrogate loss: -0.0162
+                 Mean entropy loss: 32.5230
+                       Mean reward: -0.39
+               Mean episode length: 11.95
+   Episode_Reward/track_lin_vel_xy: 0.0119
+    Episode_Reward/track_ang_vel_z: 0.0011
+     Episode_Reward/base_lin_vel_z: -0.0014
+    Episode_Reward/base_ang_vel_xy: -0.0023
+        Episode_Reward/base_height: -0.0000
+   Episode_Reward/flat_orientation: -0.0013
+          Episode_Reward/joint_vel: -0.0077
+          Episode_Reward/joint_acc: -0.0001
+     Episode_Reward/dof_pos_limits: -0.0001
+Episode_Reward/joint_deviation_arms: -0.0126
+Episode_Reward/joint_deviation_waists: -0.0014
+Episode_Reward/joint_deviation_legs: -0.0047
+               Episode_Reward/gait: 0.0062
+         Episode_Reward/feet_slide: -0.0018
+     Episode_Reward/feet_clearance: 0.0114
+Episode_Reward/feet_height_symmetry: -0.0000
+              Episode_Reward/alive: 0.0125
+        Episode_Reward/action_rate: -0.0278
+             Episode_Reward/energy: -0.0002
+ Episode_Reward/undesired_contacts: -0.0027
+         Curriculum/terrain_levels: 4.3789
+     Curriculum/lin_vel_cmd_levels: 0.5000
+Metrics/base_velocity/error_vel_xy: 0.0108
+Metrics/base_velocity/error_vel_yaw: 0.0679
+      Episode_Termination/time_out: 0.0122
+   Episode_Termination/base_height: 0.0000
+Episode_Termination/bad_orientation: 0.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 98304
+                    Iteration time: 7.91s
+                      Time elapsed: 00:00:07
+                               ETA: 13:51:23
+[34m[1mwandb[0m: [33mWARNING[0m Symlinked 1 file into the W&B run directory; call wandb.save again to sync new files.
+
+Could not find git repository in /home/user/miniconda3/envs/isaaclab/lib/python3.11/site-packages/rsl_rl/__init__.py. Skipping.
+Storing git diff for 'unitree_rl_lab' in: /home/user/unitree_rl_lab/logs/rsl_rl/unitree_g1_23dof_velocity/2026-04-07_11-03-54/git/unitree_rl_lab.diff
+[34m[1mwandb[0m: [33mWARNING[0m Symlinked 1 file into the W&B run directory; call wandb.save again to sync new files.
+################################################################################
+                      [1m Learning iteration 1/50000 [0m
+
+                       Computation: 18143 steps/s (collection: 4.836s, learning 0.582s)
+             Mean action noise std: 0.99
+          Mean value_function loss: 0.1581
+               Mean surrogate loss: -0.0151
+                 Mean entropy loss: 32.3254
+                       Mean reward: -2.79
+               Mean episode length: 47.69
+   Episode_Reward/track_lin_vel_xy: 0.0301
+    Episode_Reward/track_ang_vel_z: 0.0032
+     Episode_Reward/base_lin_vel_z: -0.0045
+    Episode_Reward/base_ang_vel_xy: -0.0101
+        Episode_Reward/base_height: -0.0012
+   Episode_Reward/flat_orientation: -0.0305
+          Episode_Reward/joint_vel: -0.0231
+          Episode_Reward/joint_acc: -0.0004
+     Episode_Reward/dof_pos_limits: -0.0007
+Episode_Reward/joint_deviation_arms: -0.0388
+Episode_Reward/joint_deviation_waists: -0.0041
+Episode_Reward/joint_deviation_legs: -0.0160
+               Episode_Reward/gait: 0.0179
+         Episode_Reward/feet_slide: -0.0063
+     Episode_Reward/feet_clearance: 0.0337
+Episode_Reward/feet_height_symmetry: -0.0002
+              Episode_Reward/alive: 0.0356
+        Episode_Reward/action_rate: -0.0827
+             Episode_Reward/energy: -0.0006
+ Episode_Reward/undesired_contacts: -0.0100
+         Curriculum/terrain_levels: 4.0928
+     Curriculum/lin_vel_cmd_levels: 0.5000
+Metrics/base_velocity/error_vel_xy: 0.0401
+Metrics/base_velocity/error_vel_yaw: 0.2236
+      Episode_Termination/time_out: 0.0317
+   Episode_Termination/base_height: 0.0000
+Episode_Termination/bad_orientation: 0.2800
+--------------------------------------------------------------------------------
+                   Total timesteps: 196608
+                    Iteration time: 5.42s
+                      Time elapsed: 00:00:13
+                               ETA: 20:33:05
+
+################################################################################
+                      [1m Learning iteration 2/50000 [0m
+
+                       Computation: 18216 steps/s (collection: 4.804s, learning 0.592s)
+             Mean action noise std: 0.98
+          Mean value_function loss: 0.0832
+               Mean surrogate loss: -0.0139
+                 Mean entropy loss: 32.2111
+                       Mean reward: -2.18
+               Mean episode length: 37.65
+   Episode_Reward/track_lin_vel_xy: 0.0394
+    Episode_Reward/track_ang_vel_z: 0.0044
+     Episode_Reward/base_lin_vel_z: -0.0049
+    Episode_Reward/base_ang_vel_xy: -0.0121
+        Episode_Reward/base_height: -0.0016
+   Episode_Reward/flat_orientation: -0.0363
+          Episode_Reward/joint_vel: -0.0300
+          Episode_Reward/joint_acc: -0.0005
+     Episode_Reward/dof_pos_limits: -0.0009
+Episode_Reward/joint_deviation_arms: -0.0519
+Episode_Reward/joint_deviation_waists: -0.0054
+Episode_Reward/joint_deviation_legs: -0.0214
+               Episode_Reward/gait: 0.0241
+         Episode_Reward/feet_slide: -0.0081
+     Episode_Reward/feet_clearance: 0.0448
+Episode_Reward/feet_height_symmetry: -0.0003
+              Episode_Reward/alive: 0.0475
+        Episode_Reward/action_rate: -0.1091
+             Episode_Reward/energy: -0.0008
+ Episode_Reward/undesired_contacts: -0.0133
+         Curriculum/terrain_levels: 3.4540
+     Curriculum/lin_vel_cmd_levels: 0.5000
+Metrics/base_velocity/error_vel_xy: 0.0545
+Metrics/base_velocity/error_vel_yaw: 0.2993
+      Episode_Termination/time_out: 0.0249
+   Episode_Termination/base_height: 0.0000
+Episode_Termination/bad_orientation: 0.9343
+--------------------------------------------------------------------------------
+                   Total timesteps: 294912
+                    Iteration time: 5.40s
+                      Time elapsed: 00:00:18
+                               ETA: 14:40:56

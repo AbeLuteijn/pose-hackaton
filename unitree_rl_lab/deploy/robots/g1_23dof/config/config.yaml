@@ -1,0 +1,69 @@
+all_transitions: &all_transitions
+  Passive: key_z.on_pressed
+  FixStand: key_x.on_pressed
+  NavigationPIDv1: key_v.on_pressed
+
+FSM:
+  enable_keyboard: true  # Enable keyboard input for FSM transitions
+  _: # enabled fsms
+    Passive:
+      id: 1
+    FixStand:
+      id: 2
+    NavigationPIDv1:
+      id: 101
+      type: NavigationPID
+
+  Passive:
+    transitions: *all_transitions
+    mode: [
+      1,1,1,1,1,1,
+      1,1,1,1,1,1,
+      1,1,1,
+      1,1,1,1,1,1,1,
+      1,1,1,1,1,1,1,
+    ]
+    kd: [
+      3,3,3,3,3,3,
+      3,3,3,3,3,3,
+      3,3,3,
+      3,3,3,3,3,3,3,  
+      3,3,3,3,3,3,3,  
+    ]
+
+  FixStand:
+    transitions: *all_transitions
+    kp: [
+      100., 100., 100., 150., 40., 40.,
+      100., 100., 100., 150., 40., 40.,
+      200,200,200,
+      40,40,40,40,40,40,40,
+      40,40,40,40,40,40,40,
+    ]
+    kd: [
+      2,2,2,4,2,2,
+      2,2,2,4,2,2,
+      5,5,5,
+      10,10,10,10,10,10,10,
+      10,10,10,10,10,10,10,
+    ]
+    ts: [0, 3]
+    qs: [
+      [],
+      [ -0.1, 0,0,0.3,-0.2,0,
+        -0.1, 0,0,0.3,-0.2,0,
+        0,0,0,
+        0, 0.25,0,0.97,0.15, 0,0,
+        0, -0.25,0,0.97,-0.15, 0,0
+      ]
+    ]
+
+  NavigationPIDv1:
+    transitions: *all_transitions
+    policy_dir: config/policy/velocity/v2.6
+    goal_pose_topic: rt/goal_pose
+    pid_gains:
+      kp_x: 5.0
+      kp_y: 5.0
+      kp_yaw: 10.0
+    # debug_print: true

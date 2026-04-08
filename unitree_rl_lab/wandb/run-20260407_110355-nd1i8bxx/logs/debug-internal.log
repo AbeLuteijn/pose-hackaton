@@ -1,0 +1,17 @@
+{"time":"2026-04-07T11:03:56.049705951Z","level":"INFO","msg":"stream: starting","core version":"0.25.0"}
+{"time":"2026-04-07T11:03:56.300372992Z","level":"INFO","msg":"stream: created new stream","id":"nd1i8bxx"}
+{"time":"2026-04-07T11:03:56.300430146Z","level":"INFO","msg":"handler: started","stream_id":"nd1i8bxx"}
+{"time":"2026-04-07T11:03:56.300544154Z","level":"INFO","msg":"stream: started","id":"nd1i8bxx"}
+{"time":"2026-04-07T11:03:56.300562537Z","level":"INFO","msg":"sender: started","stream_id":"nd1i8bxx"}
+{"time":"2026-04-07T11:03:56.300616938Z","level":"INFO","msg":"writer: started","stream_id":"nd1i8bxx"}
+{"time":"2026-04-07T11:04:33.904726644Z","level":"WARN","msg":"tensorboard: no root directory","error":"timed out after 10s"}
+{"time":"2026-04-07T11:04:33.904807593Z","level":"INFO","msg":"tensorboard: tracking new log directory","rootDir":{},"logDir":"LocalOrCloudPath(LocalPath=\"/home/user/unitree_rl_lab/logs/rsl_rl/unitree_g1_23dof_velocity/2026-04-07_11-03-54\")","namespace":""}
+{"time":"2026-04-07T11:04:33.905198503Z","level":"INFO","msg":"tensorboard: saving file","fileLocation":"/home/user/unitree_rl_lab/logs/rsl_rl/unitree_g1_23dof_velocity/2026-04-07_11-03-54/events.out.tfevents.1775559863.ip-172-31-15-124.9355.0","runPath":"logs/rsl_rl/unitree_g1_23dof_velocity/2026-04-07_11-03-54/events.out.tfevents.1775559863.ip-172-31-15-124.9355.0"}
+{"time":"2026-04-07T11:04:33.908236752Z","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":278}
+{"time":"2026-04-07T11:04:33.910368245Z","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":72}
+{"time":"2026-04-07T11:04:38.913330797Z","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":562}
+{"time":"2026-04-07T11:04:38.913746626Z","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":18}
+{"time":"2026-04-07T11:04:43.914960447Z","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":728}
+{"time":"2026-04-07T11:04:43.916520425Z","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":78}
+{"time":"2026-04-07T11:04:48.916675145Z","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":952}
+{"time":"2026-04-07T11:04:48.91863883Z","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":78}
