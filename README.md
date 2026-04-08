@@ -1,2 +1,2 @@
 # pose-hackaton
-## Author Justin
+## Authors Abe, Jesper, Andor, Justin
