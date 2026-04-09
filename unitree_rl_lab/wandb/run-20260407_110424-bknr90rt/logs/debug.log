@@ -1,5 +1,0 @@
-2026-04-07 11:04:24,186 INFO    MainThread:9355 [wandb_init.py:setup_run_log_directory():717] Logging user logs to /home/user/unitree_rl_lab/wandb/run-20260407_110424-bknr90rt/logs/debug.log
-2026-04-07 11:04:24,187 INFO    MainThread:9355 [wandb_init.py:setup_run_log_directory():718] Logging internal logs to /home/user/unitree_rl_lab/wandb/run-20260407_110424-bknr90rt/logs/debug-internal.log
-2026-04-07 11:04:24,187 INFO    MainThread:9355 [wandb_init.py:init():844] calling init triggers
-2026-04-07 11:04:24,187 INFO    MainThread:9355 [wandb_init.py:init():849] wandb.init called with sweep_config: {}
-config: {'_wandb': {}}
